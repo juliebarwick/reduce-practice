@@ -1,0 +1,22 @@
+{
+  "name": "reduce-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reduce.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliebarwick/reduce-practice.git"
+  },
+  "author": "Julie Barwick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliebarwick/reduce-practice/issues"
+  },
+  "homepage": "https://github.com/juliebarwick/reduce-practice#readme",
+  "devDependencies": {
+    "jest": "^27.1.1"
+  }
+}
