@@ -1,4 +1,4 @@
-const { map, filter, average } = require('./reduce');
+const { map, filter, average, flatten } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
 
@@ -16,5 +16,14 @@ test('should returned filtered array', () => {
 
 test('should return the average of an array of values', () => {
   expect(average(arr)).toBe(2.5);
+});
+
+test('should flatten nested arrays, no matter how nested', () => {
+  const nested1 = [1, 2, 3, [4, 5, 6], [7, 8], [[9]]];
+  const nested2 = [[1], [[2]], [[3, [4]]], [5, 6, [[[7]]]], 8, [9]];
+  const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  expect(flatten(nested1)).toStrictEqual(expected);
+  expect(flatten(nested2)).toStrictEqual(expected);
 });
 
