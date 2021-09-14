@@ -1,5 +1,7 @@
 const { map, filter, average } = require('./reduce');
 
+const arr = [1, 2, 3, 4];
+
 test('should multiply each array value by two', () => {
   const multiplyBy2 = num => num * 2;
 
@@ -8,14 +10,11 @@ test('should multiply each array value by two', () => {
 
 test('should returned filtered array', () => {
   const areEvens = num => num % 2 === 0;
-  const arr = [1, 2, 3, 4];
 
   expect(filter(arr, areEvens)).toStrictEqual([2, 4]);
 });
 
 test('should return the average of an array of values', () => {
-  const arr = [1, 2, 3, 4];
-
   expect(average(arr)).toBe(2.5);
 });
 
