@@ -3,7 +3,8 @@ const { map,
   average,
   flatten,
   every,
-  some
+  some,
+  count,
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -76,3 +77,11 @@ test('should return false if no elements pass iterator test or if empty array', 
   expect(some([], areEvens)).toBe(false);
   expect(some(noEvens, areEvens)).toBe(false);
 });
+
+test('should count the elements in an array and return an object with those counts', () => {
+  const nums = [1, 2, 3, 3, 4, 4, 4, 3];
+  const words = ['car', 'car', 'CAR', 'bat', 'batty', ''];
+
+  expect(count(nums)).toStrictEqual({ 1: 1, 2: 1, 3: 3, 4: 3 });
+  expect(count(words)).toStrictEqual({car: 2, CAR: 1, bat: 1, batty: 1, '': 1});
+})
