@@ -16,7 +16,11 @@ const flatten = (nestedArray, initial = []) => nestedArray.reduce((acc, x) => {
   }
 }, initial);
 
+// Challenge 5: write every with reduce
 const every = (arr, fn) => arr.reduce((acc, x) => acc && fn(x), true);
+
+// Challenge 6: write some with reduce
+const some = (arr, fn) => arr.reduce((acc, x) => acc || fn(x), false);
 
 module.exports = {
   map,
@@ -24,4 +28,5 @@ module.exports = {
   average,
   flatten,
   every,
+  some
 };
