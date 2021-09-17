@@ -16,11 +16,15 @@ const every = (arr, fn) => arr.reduce((acc, x) => acc && !!fn(x), true);
 // Challenge 6: write some with reduce
 const some = (arr, fn) => arr.reduce((acc, x) => acc || !!fn(x), false);
 
+// Challenge 7: return an object with the counts of elements in the array
+const count = (arr) => arr.reduce((acc, x) => ({...acc, [x]: acc[x] ? acc[x] + 1 : 1}), {});
+
 module.exports = {
   map,
   filter,
   average,
   flatten,
   every,
-  some
+  some,
+  count,
 };
