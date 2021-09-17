@@ -1,4 +1,10 @@
-const { map, filter, average, flatten, every } = require('./reduce');
+const { map,
+  filter,
+  average,
+  flatten,
+  every,
+  some
+} = require('./reduce');
 
 const arr = [1, 2, 3, 4];
 
@@ -35,7 +41,7 @@ test('should return true if all elements in array pass iterator test', () => {
   const areNotEvens = (num) => num % 2 !== 0;
   const allNotEvens = [3, 5,];
 
-  expect(every(allEvens, areEvens)).toBe(true)
+  expect(every(allEvens, areEvens)).toBe(true);
   expect(every(allNotEvens, areNotEvens)).toBe(true);
 });
 
@@ -45,7 +51,28 @@ test('should return false if all elements do not pass iterator test', () => {
   const notAllEvens2 = [1, 4, 6, 8, 10];
   const notAllEvens3 = [2, 4, 5, 8];
 
-  expect(every(notAllEvens1, areEvens)).toBe(false)
-  expect(every(notAllEvens2, areEvens)).toBe(false)
-  expect(every(notAllEvens3, areEvens)).toBe(false)
+  expect(every(notAllEvens1, areEvens)).toBe(false);
+  expect(every(notAllEvens2, areEvens)).toBe(false);
+  expect(every(notAllEvens3, areEvens)).toBe(false);
+});
+
+test('should return true if some elements pass iterator test', () => {
+  const areEvens = (num) => num % 2 === 0;
+  const someEvens1 = [2, 4, 5, 6];
+  const someEvens2 = [2, 3];
+  const someEvens3 = [1, 2];
+  const allEvens = [2, 4, 6];
+
+  expect(some(someEvens1, areEvens)).toBe(true);
+  expect(some(someEvens2, areEvens)).toBe(true);
+  expect(some(someEvens3, areEvens)).toBe(true);
+  expect(some(allEvens, areEvens)).toBe(true);
+});
+
+test('should return false if no elements pass iterator test or if empty array', () => {
+  const areEvens = (num) => num % 2 === 0;
+  const noEvens = [3, 5, 7, 9];
+
+  expect(some([], areEvens)).toBe(false);
+  expect(some(noEvens, areEvens)).toBe(false);
 });
