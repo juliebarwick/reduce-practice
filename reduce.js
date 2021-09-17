@@ -16,9 +16,12 @@ const flatten = (nestedArray, initial = []) => nestedArray.reduce((acc, x) => {
   }
 }, initial);
 
+const every = (arr, fn) => arr.reduce((acc, x) => acc && fn(x), true);
+
 module.exports = {
   map,
   filter,
   average,
   flatten,
+  every,
 };
