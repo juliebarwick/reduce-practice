@@ -16,8 +16,11 @@ const every = (arr, fn) => arr.reduce((acc, x) => acc && !!fn(x), true);
 // Challenge 6: write some with reduce
 const some = (arr, fn) => arr.reduce((acc, x) => acc || !!fn(x), false);
 
-// Challenge 7: return an object with the counts of elements in the array
+// Challenge 7: use reduce to return an object with the counts of elements in the array
 const count = (arr) => arr.reduce((acc, x) => ({...acc, [x]: acc[x] ? acc[x] + 1 : 1}), {});
+
+// Challenge 8: use reduce to return the counts of a property within an object with nested arrays
+const countNested = (obj, propToCount, nestedProp) => obj[nestedProp].reduce((acc, x) => acc + (Array.isArray(x[nestedProp]) ? countNested(x, propToCount, nestedProp) : x[propToCount]), obj[propToCount]);
 
 module.exports = {
   map,
@@ -27,4 +30,5 @@ module.exports = {
   every,
   some,
   count,
+  countNested,
 };
