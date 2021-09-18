@@ -5,6 +5,7 @@ const { map,
   every,
   some,
   count,
+  countNested,
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -84,4 +85,44 @@ test('should count the elements in an array and return an object with those coun
 
   expect(count(nums)).toStrictEqual({ 1: 1, 2: 1, 3: 3, 4: 3 });
   expect(count(words)).toStrictEqual({car: 2, CAR: 1, bat: 1, batty: 1, '': 1});
-})
+});
+
+test('should count the desired property within in an nested array within an object', () => {
+  const team = {
+    name: 'person1',
+    sales: 15,
+    manages: [
+      {
+        name: 'person2',
+        sales: 16,
+        manages: [
+          {
+            name: 'person4',
+            sales: 9,
+            manages: [
+              {
+                name: 'person5',
+                sales: 5,
+                manages: [
+                ]
+              },
+              {
+                name: 'person6',
+                sales: 2,
+                manages: [
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'person3',
+        sales: 14,
+        manages: []
+      }
+    ]
+  };
+
+  expect(countNested(team, 'sales', 'manages')).toBe(61);
+});
