@@ -22,6 +22,9 @@ const count = (arr) => arr.reduce((acc, x) => ({...acc, [x]: acc[x] ? acc[x] + 1
 // Challenge 8: use reduce to return the counts of a property within an object with nested arrays
 const countNested = (obj, propToCount, nestedProp) => obj[nestedProp].reduce((acc, x) => acc + (Array.isArray(x[nestedProp]) ? countNested(x, propToCount, nestedProp) : x[propToCount]), obj[propToCount]);
 
+// Challenge 9: combine filter and map methods
+const filterAndMap = (arr, filterFn, mapFn) => arr.reduce((acc, x) => filterFn(x) ? [...acc, mapFn(x)] : [...acc], []);
+
 module.exports = {
   map,
   filter,
@@ -31,4 +34,5 @@ module.exports = {
   some,
   count,
   countNested,
+  filterAndMap,
 };
