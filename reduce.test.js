@@ -6,6 +6,7 @@ const { map,
   some,
   count,
   countNested,
+  filterAndMap,
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -125,4 +126,35 @@ test('should count the desired property within in an nested array within an obje
   };
 
   expect(countNested(team, 'sales', 'manages')).toBe(61);
+});
+
+test('should apply a filter and map function', () => {
+  const wizards = [
+    {
+      name: 'Harry Potter',
+      house: 'Gryfindor'
+    },
+    {
+      name: 'Cedric Diggory',
+      house: 'Hufflepuff'
+    },
+    {
+      name: 'Tonks',
+      house: 'Hufflepuff'
+    },
+    {
+      name: 'Ronald Weasley',
+      house: 'Gryfindor'
+    },
+    {
+      name: 'Hermione Granger',
+      house: 'Gryfindor'
+    }
+  ];
+
+  const filterHuffle = (obj) => obj.house === 'Hufflepuff';
+  const mapName = (obj) => obj.name;
+
+  expect(filterAndMap(wizards, filterHuffle, mapName)).toStrictEqual(['Cedric Diggory', 'Tonks']);
+
 });
