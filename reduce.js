@@ -25,6 +25,9 @@ const countNested = (obj, propToCount, nestedProp) => obj[nestedProp].reduce((ac
 // Challenge 9: combine filter and map methods
 const filterAndMap = (arr, filterFn, mapFn) => arr.reduce((acc, x) => filterFn(x) ? [...acc, mapFn(x)] : [...acc], []);
 
+// Challenge 10: return an object with the counts of the results of a callback function mapped to each array value
+const countCb = (arr, cb) => arr.reduce((acc, x) => ({...acc, [cb(x)]: acc[cb(x)] ? acc[cb(x)] + 1 : 1}), {});
+
 module.exports = {
   map,
   filter,
@@ -35,4 +38,5 @@ module.exports = {
   count,
   countNested,
   filterAndMap,
+  countCb,
 };

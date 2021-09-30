@@ -7,6 +7,7 @@ const { map,
   count,
   countNested,
   filterAndMap,
+  countCb,
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -157,4 +158,10 @@ test('should apply a filter and map function', () => {
 
   expect(filterAndMap(wizards, filterHuffle, mapName)).toStrictEqual(['Cedric Diggory', 'Tonks']);
 
+});
+
+test('should return an object with the counts of the results of callback', () => {
+  const cb = (num) => num % 3;
+
+  expect(countCb(arr, cb)).toStrictEqual({0: 1, 1: 2, 2: 1});
 });
