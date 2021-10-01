@@ -1,2 +1,2 @@
 # reduce-practice
-To practice different use cases for reduce
+To practice different use cases for reduce.
