@@ -1,12 +1,13 @@
 const { map,
   filter,
+  filterAndMap,
   average,
   flatten,
   every,
   some,
   count,
+  countProp,
   countNested,
-  filterAndMap,
   countCb,
 } = require('./reduce');
 
@@ -164,4 +165,31 @@ test('should return an object with the counts of the results of callback', () =>
   const cb = (num) => num % 3;
 
   expect(countCb(arr, cb)).toStrictEqual({0: 1, 1: 2, 2: 1});
+});
+
+test('should count the properties in an object that match a given value', () => {
+  const wizards = [
+    {
+      name: 'Harry Potter',
+      house: 'Gryfindor'
+    },
+    {
+      name: 'Cedric Diggory',
+      house: 'Hufflepuff'
+    },
+    {
+      name: 'Tonks',
+      house: 'Hufflepuff'
+    },
+    {
+      name: 'Ronald Weasley',
+      house: 'Gryfindor'
+    },
+    {
+      name: 'Hermione Granger',
+      house: 'Gryfindor'
+    }
+  ];
+
+  expect(countProp(wizards, 'house', 'Gryfindor')).toBe(3);
 });
