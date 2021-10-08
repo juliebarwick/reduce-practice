@@ -9,6 +9,7 @@ const { map,
   countProp,
   countNested,
   countCb,
+  fizzBuzz,
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -192,4 +193,16 @@ test('should count the properties in an object that match a given value', () => 
   ];
 
   expect(countProp(wizards, 'house', 'Gryfindor')).toBe(3);
+});
+
+test('should return correct FizzBuzz string', () => {
+  const nums = [
+    1, 2, 3, 4, 5,
+    6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15
+  ];
+
+  const expectedFizzBuzz = '1\n2\nBuzz\n4\nFizz\nBuzz\n7\n8\nBuzz\nFizz\n11\nBuzz\n13\n14\nFizzBuzz\n';
+
+  expect(fizzBuzz(nums)).toBe(expectedFizzBuzz);
 });

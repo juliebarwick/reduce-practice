@@ -31,6 +31,20 @@ const countNested = (obj, propToCount, nestedProp) => obj[nestedProp].reduce((ac
 // Challenge 11: return an object with the counts of the results of a callback function mapped to each array value
 const countCb = (arr, cb) => arr.reduce((acc, x) => ((y) => ({...acc, [y]: acc[y] ? acc[y] + 1 : 1}))(cb(x)), {});
 
+// Challenge 12: write `FizzBuzz` with reduce (input is an array of numbers)
+const fizzBuzz = (arr) => arr.reduce((acc, x) => {
+  if (x % 5 !== 0 && x % 3 !== 0) {
+    acc += x;
+  }
+  if (x % 5 === 0) {
+    acc += 'Fizz';
+  }
+  if (x % 3 === 0) {
+    acc += 'Buzz';
+  }
+  return acc + '\n';
+}, '');
+
 module.exports = {
   map,
   filter,
@@ -43,4 +57,5 @@ module.exports = {
   countProp,
   countCb,
   countNested,
+  fizzBuzz,
 };
