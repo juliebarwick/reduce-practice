@@ -45,6 +45,9 @@ const fizzBuzz = (arr) => arr.reduce((acc, x) => {
   return acc + '\n';
 }, '');
 
+// Challenge 13: Convert an array of objects to one nested object, with the given input key as the key for each object
+const arrToObj = (arr, key) => arr.reduce((acc, x) => ({...acc, [x[key]]: x}), {})
+
 module.exports = {
   map,
   filter,
@@ -58,4 +61,5 @@ module.exports = {
   countCb,
   countNested,
   fizzBuzz,
+  arrToObj,
 };

@@ -10,6 +10,7 @@ const { map,
   countNested,
   countCb,
   fizzBuzz,
+  arrToObj
 } = require('./reduce');
 
 const arr = [1, 2, 3, 4];
@@ -206,3 +207,36 @@ test('should return correct FizzBuzz string', () => {
 
   expect(fizzBuzz(nums)).toBe(expectedFizzBuzz);
 });
+
+test('should return a nested object', () => {
+  const wizards = [
+    {
+      name: 'Harry Potter',
+      house: 'Gryfindor'
+    },
+    {
+      name: 'Cedric Diggory',
+      house: 'Hufflepuff'
+    },
+    {
+      name: 'Tonks',
+      house: 'Hufflepuff'
+    }
+  ];
+  const expectedWizardObj = {
+    'Harry Potter': {
+      name: 'Harry Potter',
+      house: 'Gryfindor'
+    },
+    'Cedric Diggory': {
+      name: 'Cedric Diggory',
+      house: 'Hufflepuff'
+    },
+    'Tonks': {
+      name: 'Tonks',
+      house: 'Hufflepuff'
+    }
+  }
+  expect(arrToObj(wizards, 'name')).toStrictEqual(expectedWizardObj)
+
+})
